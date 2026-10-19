@@ -44,3 +44,12 @@ const startServer = async () => {
     })
 }
 startServer()
+
+
+// cd C:\Program Files (x86)\Google\Chrome\Application
+// chrome.exe --disable-web-security --user-data-dir="C:\my-chrome-data\data"
+// 	"scripts": {
+// 		    "dev": "cross-env NODE_ENV=development nodemon backend/index.js",
+//     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+//     "start": "cross-env NODE_ENV=production node backend/index.js"
+// 	},
