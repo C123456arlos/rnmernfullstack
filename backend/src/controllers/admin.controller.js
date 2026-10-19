@@ -11,7 +11,7 @@ export async function createProduct(req, res) {
         if (!req.files || req.files.length === 0) {
             return res.status(400).json({message:'at least one image is required'})
         }
-        if (req.files.length < 3) {
+        if (req.files.length > 3) {
             return res.status(400).json({message:'maximum 3 images allowed'})
         }
         const uploadPromises = req.files.map((file) => {
@@ -33,7 +33,7 @@ export async function createProduct(req, res) {
  }
 export async function getAllProducts(_, res) {
     try {
-        const products = (await Product.find()).toSorted({ createdAt: -1 })
+        const products = await Product.find().sort({ createdAt: -1 })
         res.status(200).json(products)
     } catch (error) {
         console.error('Error fetching products', error)
@@ -110,7 +110,8 @@ export async function updateOrderStatus(req, res) {
 export async function getAllCustomers(_, res) { 
     try {
         const customers = await User.find().sort({ createdAt: -1 })
-        res.status(200).json({customers})
+        
+        res.status(200).json({ customers })
     } catch (error) {
         console.error('Error fetching customers', error)
         res.status(500).json({error:'Internal server error'})
@@ -137,5 +138,26 @@ export async function getDashboardStats(_, res) {
         console.error('Error fetching dashboard stats', error)
         res.status(500).json({error:'Internal server error'})
 
+    }
+}
+export const deleteProduct = async (req, res) => {
+    try {
+        const { id } = req.params
+        const product = await Product.findById(id)
+        if (!product) {
+            return res.status(404).json({message:'product not found'})
+        }
+        if (product.images && product.images.length > 0) {
+            const deletePromises = product.images.map((imageUrl) => {
+                const publicId = 'products/' + imageUrl.split('/products/')[1]?.split('.')[0]
+                if(publicId) return cloudinary.uploader.destroy(publicId)
+            })
+            await Promise.all(deletePromises.filter(Boolean))
+        }
+        await Product.findByIdAndDelete(id)
+        res.status(200).json({message:'product deleted successfully'})
+    } catch (error) {
+        console.error('error deleting product', error)
+        res.status(500).json({message:'failed to delete product'})
     }
 }

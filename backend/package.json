@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "seed:products":"node src/seeds/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
   "dependencies": {
     "@clerk/express": "^2.1.80",
     "cloudinary": "^2.8.0",
+    "cors": "^2.8.6",
     "dotenv": "^18.0.8",
     "express": "^5.3.0",
     "inngest": "^3.54.0",
