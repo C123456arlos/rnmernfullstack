@@ -4192,3 +4192,110 @@
 {"_e":"metro:bundling:done","_t":1792492930264,"id":"4","total":1,"ms":109.2818}
 {"_e":"metro:client_log","_t":1792492934143,"level":"warn","data":["\nClerk - DEPRECATION WARNING: @clerk/clerk-expo is deprecated.\n\nPlease migrate to @clerk/expo.\n\nMigration guide: https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-3\n"]}
 {"_e":"metro:client_log","_t":1792492934666,"level":"warn","data":["Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview"]}
+{"_e":"root:init","_t":1792494738502,"format":"v0-jsonl","version":"57.0.29"}
+{"_e":"env:mode","_t":1792494738505,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1792494738512,"mode":"development","files":["../..\\..\\.env.local"],"env":{"CLERK_WEBHOOK_SECRET":"whsec_duoJu5O4OzrieUJgGip+sq5bJXf5zTiH","CONVEX_DEPLOYMENT":"dev:accurate-lion-919","EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_aGFybWxlc3MtcHVnLTg0OTUuY2xlcmsuYWNjb3VudHMuZGV2JA","EXPO_PUBLIC_CONVEX_SITE_URL":"https://accurate-lion-919.convex.site","EXPO_PUBLIC_CONVEX_URL":"https://accurate-lion-919.convex.cloud"}}
+{"_e":"devserver:start","_t":1792494739699,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1792494741205,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1792494741867,"plugins":[]}
+{"_e":"metro:instantiate","_t":1792494754356,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1792494765194,"id":"1","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1792494765195,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494765210,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494765324,"id":"1","progress":0.07438016528925619,"total":44,"current":12}
+{"_e":"metro:bundling:progress","_t":1792494765425,"id":"1","progress":0.07438016528925619,"total":162,"current":26}
+{"_e":"metro:bundling:progress","_t":1792494765524,"id":"1","progress":0.07438016528925619,"total":239,"current":60}
+{"_e":"metro:bundling:progress","_t":1792494765624,"id":"1","progress":0.188681640625,"total":320,"current":139}
+{"_e":"metro:bundling:progress","_t":1792494765727,"id":"1","progress":0.188681640625,"total":372,"current":158}
+{"_e":"metro:bundling:progress","_t":1792494765827,"id":"1","progress":0.2235430051994888,"total":478,"current":226}
+{"_e":"metro:bundling:progress","_t":1792494765927,"id":"1","progress":0.2811380469572635,"total":579,"current":307}
+{"_e":"metro:bundling:progress","_t":1792494766046,"id":"1","progress":0.3399730741639725,"total":638,"current":372}
+{"_e":"metro:bundling:progress","_t":1792494766146,"id":"1","progress":0.38579845268795865,"total":710,"current":441}
+{"_e":"metro:bundling:progress","_t":1792494766247,"id":"1","progress":0.43443851113484433,"total":795,"current":524}
+{"_e":"metro:bundling:progress","_t":1792494766347,"id":"1","progress":0.5275165090631387,"total":844,"current":613}
+{"_e":"metro:bundling:progress","_t":1792494766447,"id":"1","progress":0.6365075099286333,"total":915,"current":730}
+{"_e":"metro:bundling:progress","_t":1792494766547,"id":"1","progress":0.7272991749512946,"total":958,"current":817}
+{"_e":"metro:bundling:progress","_t":1792494766647,"id":"1","progress":0.7909185495265355,"total":994,"current":884}
+{"_e":"metro:bundling:progress","_t":1792494766753,"id":"1","progress":0.8202536124818323,"total":1039,"current":941}
+{"_e":"metro:bundling:progress","_t":1792494766853,"id":"1","progress":0.8659569503065744,"total":1109,"current":1032}
+{"_e":"metro:bundling:progress","_t":1792494766953,"id":"1","progress":0.8954148839498025,"total":1191,"current":1127}
+{"_e":"metro:bundling:progress","_t":1792494767053,"id":"1","progress":0.8954148839498025,"total":1347,"current":1257}
+{"_e":"metro:bundling:progress","_t":1792494767153,"id":"1","progress":0.8954148839498025,"total":1511,"current":1385}
+{"_e":"metro:bundling:progress","_t":1792494767253,"id":"1","progress":0.9226751225323568,"total":1572,"current":1510}
+{"_e":"metro:bundling:progress","_t":1792494767353,"id":"1","progress":0.9593101038265668,"total":1654,"current":1620}
+{"_e":"metro:bundling:progress","_t":1792494767457,"id":"1","progress":0.9976401188164632,"total":1694,"current":1692}
+{"_e":"metro:bundling:progress","_t":1792494767719,"id":"1","progress":0.9988197109319787,"total":1694,"current":1693}
+{"_e":"metro:bundling:progress","_t":1792494767833,"id":"1","progress":0.9988197109319787,"total":1698,"current":1693}
+{"_e":"metro:bundling:progress","_t":1792494767842,"id":"1","progress":0.9988197109319787,"total":1698,"current":1694}
+{"_e":"metro:bundling:progress","_t":1792494767957,"id":"1","progress":0.9988197109319787,"total":1700,"current":1696}
+{"_e":"metro:bundling:progress","_t":1792494768895,"id":"1","progress":0.9988197109319787,"total":1700,"current":1697}
+{"_e":"metro:bundling:progress","_t":1792494769000,"id":"1","progress":0.9988197109319787,"total":1701,"current":1698}
+{"_e":"metro:bundling:progress","_t":1792494769516,"id":"1","progress":0.9988197109319787,"total":1701,"current":1699}
+{"_e":"metro:bundling:progress","_t":1792494769621,"id":"1","progress":0.9988197109319787,"total":1702,"current":1700}
+{"_e":"metro:bundling:progress","_t":1792494769640,"id":"1","progress":0.9988252570764193,"total":1702,"current":1701}
+{"_e":"metro:bundling:progress","_t":1792494769740,"id":"1","progress":0.9988252570764193,"total":1829,"current":1769}
+{"_e":"metro:bundling:progress","_t":1792494769840,"id":"1","progress":0.9988252570764193,"total":1883,"current":1842}
+{"_e":"metro:bundling:progress","_t":1792494769941,"id":"1","progress":0.9988252570764193,"total":1906,"current":1877}
+{"_e":"metro:bundling:progress","_t":1792494770047,"id":"1","progress":0.9988252570764193,"total":1907,"current":1881}
+{"_e":"metro:bundling:progress","_t":1792494770152,"id":"1","progress":0.9988252570764193,"total":1907,"current":1887}
+{"_e":"metro:bundling:progress","_t":1792494770253,"id":"1","progress":0.9988252570764193,"total":1911,"current":1893}
+{"_e":"metro:bundling:progress","_t":1792494770354,"id":"1","progress":0.9988252570764193,"total":1912,"current":1903}
+{"_e":"metro:bundling:progress","_t":1792494770457,"id":"1","progress":0.9988252570764193,"total":1919,"current":1912}
+{"_e":"metro:bundling:progress","_t":1792494770569,"id":"1","progress":0.9988252570764193,"total":1919,"current":1914}
+{"_e":"metro:bundling:progress","_t":1792494770679,"id":"1","progress":0.9988252570764193,"total":1919,"current":1915}
+{"_e":"metro:bundling:progress","_t":1792494770791,"id":"1","progress":0.9988252570764193,"total":1933,"current":1929}
+{"_e":"metro:bundling:progress","_t":1792494771817,"id":"1","progress":0.9988252570764193,"total":1933,"current":1930}
+{"_e":"metro:bundling:progress","_t":1792494771930,"id":"1","progress":0.9989656064824491,"total":1933,"current":1932}
+{"_e":"metro:bundling:progress","_t":1792494772057,"id":"1","progress":0.999,"total":1933,"current":1933}
+{"_e":"metro:bundling:done","_t":1792494772184,"id":"1","total":1933,"ms":6990.1786}
+{"_e":"metro:client_log","_t":1792494776649,"level":"warn","data":["\nClerk - DEPRECATION WARNING: @clerk/clerk-expo is deprecated.\n\nPlease migrate to @clerk/expo.\n\nMigration guide: https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-3\n"]}
+{"_e":"metro:client_log","_t":1792494777221,"level":"warn","data":["Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview"]}
+{"_e":"metro:bundling:started","_t":1792494819759,"id":"4","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1792494819759,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792494819864,"id":"4","total":1,"ms":104.876}
+{"_e":"metro:client_log","_t":1792494824290,"level":"warn","data":["\nClerk - DEPRECATION WARNING: @clerk/clerk-expo is deprecated.\n\nPlease migrate to @clerk/expo.\n\nMigration guide: https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-3\n"]}
+{"_e":"metro:client_log","_t":1792494824834,"level":"warn","data":["Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview"]}
+{"_e":"metro:bundling:started","_t":1792494870179,"id":"7","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1792494870179,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494870180,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494870298,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494870591,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494870691,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494870791,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494870891,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494870991,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494871091,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494871191,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494871303,"id":"7","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792494871418,"id":"7","total":1,"ms":1239.5062}
+{"_e":"metro:client_log","_t":1792494875984,"level":"warn","data":["\nClerk - DEPRECATION WARNING: @clerk/clerk-expo is deprecated.\n\nPlease migrate to @clerk/expo.\n\nMigration guide: https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-3\n"]}
+{"_e":"metro:client_log","_t":1792494876521,"level":"warn","data":["Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview"]}
+{"_e":"metro:bundling:started","_t":1792494892889,"id":"a","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1792494892889,"id":"a","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792494892988,"id":"a","total":1,"ms":99.2479}
+{"_e":"metro:bundling:started","_t":1792494931876,"id":"e","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1792494931876,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494931878,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932028,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932327,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932427,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932527,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932627,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932727,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932827,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494932928,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494933028,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1792494933143,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792494933239,"id":"e","total":1,"ms":1363.1774}
+{"_e":"metro:client_log","_t":1792494938403,"level":"warn","data":["\nClerk - DEPRECATION WARNING: @clerk/clerk-expo is deprecated.\n\nPlease migrate to @clerk/expo.\n\nMigration guide: https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-3\n"]}
+{"_e":"metro:client_log","_t":1792494938820,"level":"warn","data":["Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview"]}
+{"_e":"metro:bundling:started","_t":1792495003787,"id":"i","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1792495003787,"id":"i","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792495003892,"id":"i","total":1,"ms":105.1208}
+{"_e":"metro:client_log","_t":1792495008670,"level":"warn","data":["\nClerk - DEPRECATION WARNING: @clerk/clerk-expo is deprecated.\n\nPlease migrate to @clerk/expo.\n\nMigration guide: https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-3\n"]}
+{"_e":"metro:client_log","_t":1792495009175,"level":"warn","data":["Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview"]}
+{"_e":"metro:bundling:started","_t":1792495072458,"id":"l","platform":"android","environment":null,"entry":"node_modules\\expo-router\\entry.js"}
+{"_e":"metro:bundling:progress","_t":1792495072458,"id":"l","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1792495072554,"id":"l","total":1,"ms":96.1216}
+{"_e":"metro:client_log","_t":1792495076858,"level":"warn","data":["\nClerk - DEPRECATION WARNING: @clerk/clerk-expo is deprecated.\n\nPlease migrate to @clerk/expo.\n\nMigration guide: https://clerk.com/docs/guides/development/upgrading/upgrade-guides/core-3\n"]}
+{"_e":"metro:client_log","_t":1792495077333,"level":"warn","data":["Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview"]}

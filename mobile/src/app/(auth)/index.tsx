@@ -3,8 +3,8 @@ import React from 'react'
 
 const AuthScreen = () => {
   return (
-    <View>
-      <Text className='text-red-500'>AuthScreen</Text>
+    <View  className='flex-1 justify-center items-center'>
+      <Text>AuthScreen</Text>
     </View>
   )
 }
