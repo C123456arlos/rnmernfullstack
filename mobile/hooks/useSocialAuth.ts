@@ -2,7 +2,25 @@ import { useSSO } from "@clerk/clerk-expo"
 import { useState } from "react"
 import { Alert } from "react-native"
 function useSocialAuth() {
-  return {}
+  const [isLoading, setIsLoading] = useState(false)
+  const { startSSOFlow } = useSSO()
+  const handleSocialAuth = async (strategy:'oauth_google'|'oauth_apple') => {
+    setIsLoading(true)
+    try {
+      const { createdSessionId, setActive } = await startSSOFlow({ strategy })
+      if (createdSessionId && setActive) {
+        await setActive({session:createdSessionId})
+      }
+
+    } catch (error) {
+      console.log('error in social auth', error)
+      const provider= strategy==='oauth_google'?"Google":'Apple'
+      Alert.alert('error', `failed to sign in with ${provider} please try again`)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+  return {isLoading, handleSocialAuth}
 }
 
 export default useSocialAuth
