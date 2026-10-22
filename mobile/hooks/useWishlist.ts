@@ -13,7 +13,8 @@ const useWishlist = () => {
     })
     const addToWishlistMutation = useMutation({
         mutationFn: async (productId: string)=>{
-            const { data } = await api.post<{wishlist:string[]}>(`/users/wishlist/`, { productId })
+            const { data } = await api.post<{ wishlist: string[] }>(`/users/wishlist`, {productId})
+            console.log('data', data)
             return data.wishlist
         },
         onSuccess:()=>queryClient.invalidateQueries({queryKey:['wishlist']})

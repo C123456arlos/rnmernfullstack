@@ -5,14 +5,27 @@ import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '../constants/colors'
 import { router } from 'expo-router'
 import useCart from '../hooks/useCart'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useApi } from '../lib/api'
 interface ProductsGridProps{
   isLoading: boolean,
   isError: boolean,
   products:Product[]
 }
 const ProductsGrid = ({ products, isLoading, isError }: ProductsGridProps) => {
+  // const queryClient = useQueryClient()
+  //     const api = useApi()
+  //     const addToWishlist = useMutation({
+  //         mutationFn: async (productId: string)=>{
+  //             const { data } = await api.post<{ wishlist: string[] }>(`/users/wishlist`, {productId})
+  //             console.log('data', data)
+  //             return data.wishlist
+  //         },
+  //         onSuccess:()=>queryClient.invalidateQueries({queryKey:['wishlist']})
+  //     })
   const { isInWishlist, toggleWishlist, isAddingToWishlist, isRemovingFromWishlist, addToWishlist } = useWishlist()
-  const {isAddingToCart, addToCart}= useCart()
+  
+  const { isAddingToCart, addToCart } = useCart()
   const handleAddToCart = (productId: string, productName: string) => {
     addToCart({ productId, quantity: 1 }, {
       onSuccess: () => {
@@ -31,16 +44,16 @@ const ProductsGrid = ({ products, isLoading, isError }: ProductsGridProps) => {
         <Image source={{ uri: product.images[0] }} style={styles.sourceImage}
           resizeMode='cover'>
         </Image>
-        <TouchableOpacity style={styles.itemButton} activeOpacity={0.7}
-          onPress={() => addToWishlist}>
-        </TouchableOpacity>
         {/* <TouchableOpacity style={styles.itemButton} activeOpacity={0.7}
+          onPress={() => addToWishlist}>
+        </TouchableOpacity> */}
+        <TouchableOpacity style={styles.itemButton} activeOpacity={0.7}
           onPress={() => toggleWishlist || isRemovingFromWishlist}>
           {isAddingToWishlist || isRemovingFromWishlist ? (
           <ActivityIndicator size='small' color={'#ffffff'}></ActivityIndicator>
           ) : (<Ionicons name={isInWishlist(product._id) ? 'heart' : 'heart-outline'} size={18}
           color={isInWishlist(product._id) ?'#ff6b6b':'#ffffff'}></Ionicons>)}
-        </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.textCategorySecondary}>{product.category}</Text>
