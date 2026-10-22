@@ -5,7 +5,7 @@ import useSocialAuth from '../../../hooks/useSocialAuth'
 
 export default function Login() {
     const { startSSOFlow } = useSSO()
-      const { isLoading, handleSocialAuth } = useSocialAuth()
+      const { loadingStrategy, handleSocialAuth } = useSocialAuth()
     const router=useRouter()
     const handleGoogleSignIn = async () => {
         try {
@@ -21,20 +21,22 @@ export default function Login() {
 
   return (
     <View  style={styles.container}>
-      <Image source={require('../../../assets/images/desk.png')}
-        resizeMode={'contain'} style={styles.mainCenter}></Image>
+      {/* <Image source={require('../../../assets/images/desk.png')}
+        resizeMode={'contain'} style={styles.mainCenter}></Image> */}
       <View style={styles.subContainer}>
         <TouchableOpacity style={[styles.button, {shadowOffset:{width:0, height:1},
             shadowOpacity: 0.1,
-            elevation:2}]} onPress={handleGoogleSignIn}
+          elevation: 2
+        }]} onPress={handleGoogleSignIn}
+          disabled={loadingStrategy!==null}
         // border-gray-300 rounded-full px-6 py-2' onPress={() => handleSocialAuth('oauth_google')}
           // disabled={isLoading}
 
         >
-          {isLoading ? (<ActivityIndicator size={'small'} color={'#4285f4'}></ActivityIndicator>) : (
+          {loadingStrategy==='oauth_google' ? (<ActivityIndicator size={'small'} color={'#4285f4'}></ActivityIndicator>) : (
             <View style={styles.buttonDiv}>
-              <Image source={require('../../../assets/images/google.png')}
-                style={styles.logo} resizeMode='contain'></Image>
+              {/* <Image source={require('../../../assets/images/google.png')}
+                style={styles.logo} resizeMode='contain'></Image> */}
               <Text style={styles.buttonText}>continue with google</Text>
             </View>
           )}
@@ -43,13 +45,13 @@ export default function Login() {
             shadowOpacity: 0.1,
             elevation:2}]}
           onPress={()=>handleSocialAuth('oauth_apple')}
-          disabled={isLoading}
+          disabled={loadingStrategy!==null}
     
         >
-          {isLoading ? (<ActivityIndicator size={'small'} color={'#4285f4'}></ActivityIndicator>) : (
+          {loadingStrategy === 'oauth_apple' ? (<ActivityIndicator size={'small'} color={'#4285f4'}></ActivityIndicator>) : (
             <View style={styles.buttonDiv}>
-              <Image source={require('../../../assets/images/apple-logo.png')}
-                style={styles.logo} resizeMode='contain'></Image>
+              {/* <Image source={require('../../../assets/images/apple-logo.png')}
+                style={styles.logo} resizeMode='contain'></Image> */}
               <Text style={styles.buttonText} className='size-3'>continue with apple</Text>
             </View>
           )}

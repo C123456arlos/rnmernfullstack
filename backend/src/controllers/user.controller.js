@@ -74,7 +74,9 @@ export async function deleteAddress() {
 export async function addToWishlist(req, res) {
     try {
         const { productId } = req.params
-        const user = req.user
+        const { clerkId } = req.body
+           const user = await User.findOne({ clerkId: clerkId })
+        // const user = req.user
         if (user.wishlist.includes(productId)) {
             return res.status(400).json({error:'product already in wishlist'})
         }
