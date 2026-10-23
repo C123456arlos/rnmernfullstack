@@ -29,8 +29,6 @@ export default function RootLayout() {
       publishableKey={publishableKey}>
        <Stack screenOptions={{headerShown:false}}></Stack>  </ClerkProvider>
         </QueryClientProvider>
-  
-      
       )
 }
 

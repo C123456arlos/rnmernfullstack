@@ -8,6 +8,7 @@ const useWishlist = () => {
         queryKey: ['wishlist'],
         queryFn: async () => {
             const { data } = await api.get<{ wishlist: Product[] }>('/users/wishlist')
+            console.log('data', data)
             return data.wishlist
         }
     })
