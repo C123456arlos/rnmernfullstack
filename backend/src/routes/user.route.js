@@ -66,7 +66,7 @@
 
 import { Router } from "express"
 import { addAddress, addToWishlist, deleteAddress, getAddresses, removeFromWishlist, updateAddress } from "../controllers/user.controller.js"
-import { protectRoute } from "../middleware/protectRoute.js"
+import { protectRoute } from "../middleware/auth.middleware.js"
 import { getWishlist } from "../controllers/user.controller.js"
 const router = Router()
 router.use(protectRoute)

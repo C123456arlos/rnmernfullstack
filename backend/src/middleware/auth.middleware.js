@@ -93,15 +93,6 @@
 //         }
 //     }
 // ]
-// export const adminOnly = (req, res, next) => {
-//     if (!req.user) {
-//         return res.status(401).json({ message:'unauthorized user not found'})
-//     }
-//     if (req.user.email !== ENV.ADMIN_EMAIL) {
-//         return res.status(403).json({message:'forbidden admin access only'})
-//     }
-//     next()
-// }
 
 import { requireAuth } from '@clerk/express'
 import {User} from '../models/user.model.js'
@@ -113,9 +104,9 @@ export const protectRoute = [
             const clerkId = req.auth().userId
             console.log('clerkId',clerkId)
             if (!clerkId) return res.status(401).json({ message: 'unauthorized invalid token' })
-            const user = await User.findOne({ clerkId })
+                const user = await User.findOne({ clerkId })
             if (!user) return res.status(404).json({ message: 'user not found' })
-            req.user = user
+                req.user = user
             next()
         } catch (error) {
             console.error('error in protect route middleware', error)
@@ -123,3 +114,12 @@ export const protectRoute = [
         }
     }
 ]
+    export const adminOnly = (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({ message:'unauthorized user not found'})
+        }
+        if (req.user.email !== ENV.ADMIN_EMAIL) {
+            return res.status(403).json({message:'forbidden admin access only'})
+        }
+        next()
+    }
