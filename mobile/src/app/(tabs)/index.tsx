@@ -16,6 +16,7 @@ const ShopScreen = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const { data: products, isLoading, isError } = useProducts()
+  console.log('products', products)
   const filteredProducts = useMemo(() => {
     if (!products) return []
     let filtered = products
