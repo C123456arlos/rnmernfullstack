@@ -17,13 +17,7 @@ dns.setServers(["1.1.1.1"])
 const app = express()
 const __dirname = path.resolve()
 app.use(express.json())
-
 app.use(clerkMiddleware())
-
-
-
-
-
 app.use(cors({origin:ENV.CLIENT_URL, credentials:true}))
 // app.use(cors({origin:'http://localhost:5173'}))
 app.use('/api/inngest', serve({ client: inngest, functions: functions }))
