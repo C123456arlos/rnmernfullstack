@@ -8,7 +8,7 @@ router.get('/addresses', protectRoute, getAddresses)
 router.put('/addresses/:addressId', protectRoute, updateAddress)
 router.delete('/addresses/:addressId', protectRoute, deleteAddress)
 
-router.post('/wishlist/:productId', addToWishlist)
-router.delete('/wishlist/:productId', removeFromWishlist)
+router.post('/wishlist/:productId', protectRoute, addToWishlist)
+router.delete('/wishlist/:productId',protectRoute, removeFromWishlist)
 router.get('/wishlist', getWishlist)
 export default router
