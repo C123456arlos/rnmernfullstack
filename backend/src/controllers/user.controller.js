@@ -74,7 +74,12 @@ export async function deleteAddress() {
 export async function addToWishlist(req, res) {
     try {
         const { productId } = req.params
+        //  const clerkId = req.auth().userId
+        //     console.log('clerkId',clerkId)
+        //     if (!clerkId) return res.status(401).json({ message: 'unauthorized invalid token' })
+        //     const user = await User.findOne({ clerkId })
         const user = req.user
+        console.log('user', user)
         if (user.wishlist.includes(productId)) {
             return res.status(400).json({error:'product already in wishlist'})
         }
@@ -86,11 +91,11 @@ export async function addToWishlist(req, res) {
         res.status(500).json({error:'Internal server error'})
     }
 }
-export async function removeFromWishlist() {
+export async function removeFromWishlist(req, res) {
     try {
         const { productId } = req.params
         const user = req.user
-        if (user.wishlist.includes(productId)) {
+        if (!user.wishlist.includes(productId)) {
             return res.status(400).json({error:'product is not even in wishlist'})
         }
         user.wishlist.pull(productId)
@@ -101,9 +106,10 @@ export async function removeFromWishlist() {
         res.status(500).json({error:'Internal server error'})
     }
  }
-export async function getWishlist() {
+export async function getWishlist(req, res) {
     try {
-    // const user= req.user
+        // const user= req.user
+console.log('req.user',req.user)
     const user= await User.findById(req.user._id).populate('wishlist')
     res.status(200).json({ wishlist: user.wishlist })
 } catch (error) {
