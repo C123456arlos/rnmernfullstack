@@ -90,7 +90,7 @@ export async function removeFromWishlist(req, res) {
     try {
         const { productId } = req.params
         const user = req.user
-        if (user.wishlist.includes(productId)) {
+        if (!user.wishlist.includes(productId)) {
             return res.status(400).json({error:'product is not even in wishlist'})
         }
         user.wishlist.pull(productId)
