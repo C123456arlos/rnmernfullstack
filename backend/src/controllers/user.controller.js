@@ -28,7 +28,7 @@ export async function getAddresses(req, res) {
         res.status(500).json({error:'Internal server error'})
     }
  }
-export async function updateAddress(req, res)
+export async function updateAddress()
 {
     try {
         const { label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault } = req.body
@@ -59,7 +59,7 @@ export async function updateAddress(req, res)
     }
 
  }
-export async function deleteAddress(req, res) {
+export async function deleteAddress() {
     try {
         const { addressId } = req.params
         const user = req.user
