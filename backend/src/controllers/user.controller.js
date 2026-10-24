@@ -28,7 +28,7 @@ export async function getAddresses(req, res) {
         res.status(500).json({error:'Internal server error'})
     }
  }
-export async function updateAddress()
+export async function updateAddress(req, res)
 {
     try {
         const { label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault } = req.body
@@ -59,7 +59,7 @@ export async function updateAddress()
     }
 
  }
-export async function deleteAddress() {
+export async function deleteAddress(req, res) {
     try {
         const { addressId } = req.params
         const user = req.user
@@ -86,7 +86,7 @@ export async function addToWishlist(req, res) {
         res.status(500).json({error:'Internal server error'})
     }
 }
-export async function removeFromWishlist() {
+export async function removeFromWishlist(req, res) {
     try {
         const { productId } = req.params
         const user = req.user
@@ -101,7 +101,7 @@ export async function removeFromWishlist() {
         res.status(500).json({error:'Internal server error'})
     }
  }
-export async function getWishlist() {
+export async function getWishlist(req, res) {
     try {
     // const user= req.user
     const user= await User.findById(req.user._id).populate('wishlist')

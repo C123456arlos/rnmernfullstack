@@ -257,7 +257,7 @@ interface ProductsGridProps{
   products:Product[]
 }
 const ProductsGrid = ({ products, isLoading, isError }: ProductsGridProps) => {
-  const { isInWishlist, toggleWishlist, isAddingToWishlist, isRemovingFromWishlist} = useWishlist()
+  const { isInWishlist, toggleWishlist, isAddingToWishlist, isRemovingFromWishlist, addToWishlist} = useWishlist()
   
   const { isAddingToCart, addToCart } = useCart()
   const handleAddToCart = (productId: string, productName: string) => {
@@ -274,12 +274,27 @@ const ProductsGrid = ({ products, isLoading, isError }: ProductsGridProps) => {
     <TouchableOpacity style={[styles.renderButton, { width: '48%' }]} activeOpacity={0.8}
       // onPress={() => router.push(`/product/${product._id}`)}
     >
+
+
+                {/* <button
+          onClick={() => toggleWishlist(product._id) }>
+          {isAddingToWishlist || isRemovingFromWishlist ? (
+          <span>loading</span>     
+          ) : <span>{isInWishlist(product._id)?'added':'removed'}</span>
+          
+            // (<Ionicons name={isInWishlist(product._id) ? 'heart' : 'heart-outline'} size={18}
+            // color={isInWishlist(product._id) ? '#ff6b6b' : '#ffffff'}></Ionicons>)
+          }
+        
+        </button> */}
       <View style={styles.renderImage}>
         <Image source={{ uri: product.images[0] }} style={styles.sourceImage}
           resizeMode='cover'>
         </Image>
         <TouchableOpacity style={styles.itemButton} activeOpacity={0.7}
-          onPress={() => toggleWishlist || isRemovingFromWishlist}>
+          onPress={() => toggleWishlist(product._id)}>
+        {/* <TouchableOpacity style={styles.itemButton} activeOpacity={0.7}
+          onPress={() => toggleWishlist || isRemovingFromWishlist}> */}
           {isAddingToWishlist || isRemovingFromWishlist ? (
           <ActivityIndicator size='small' color={'#ffffff'}></ActivityIndicator>
           ) : (<Ionicons name={isInWishlist(product._id) ? 'heart' : 'heart-outline'} size={18}
