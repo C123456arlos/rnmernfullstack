@@ -2,26 +2,24 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "server": "node --watch server.js",
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "seed:products":"node src/seeds/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@clerk/express": "^1.7.41",
+    "@clerk/express": "^2.1.80",
+    "cloudinary": "^2.8.0",
     "cors": "^2.8.6",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
     "inngest": "^3.54.0",
-    "mongoose": "^8.19.1",
-    "stream-chat": "^9.24.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
+    "mongoose": "^8.19.3",
+    "multer": "^2.4.0"
   }
 }
