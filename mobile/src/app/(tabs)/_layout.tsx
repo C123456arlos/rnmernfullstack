@@ -8,7 +8,7 @@ const TabsLayout = () => {
     const { isSignedIn, isLoaded } = useAuth()
     const insets= useSafeAreaInsets()
     if (!isLoaded) return null
-    if(!isSignedIn) return <Redirect href={'./(auth)/login'}></Redirect>
+    if(!isSignedIn) return <Redirect href={'/(auth)'}></Redirect>
   return (
       <Tabs screenOptions={{
           headerShown: false,
