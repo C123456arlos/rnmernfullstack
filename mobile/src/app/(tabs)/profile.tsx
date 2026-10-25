@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons'
 const MENU_ITEMS = [
   { id: 1, icon: 'person-outline', title: 'edit profile', color: '#3b82f6', action: '/profile' },
   { id: 2, icon: 'list-outline', title: 'orders', color: '#10b981', action: '/orders' },
-  { id: 3, icon: 'location-outline', title: 'addresses', color: '#f59e0b', action: '/addresse' },
+  { id: 3, icon: 'location-outline', title: 'addresses', color: '#f59e0b', action: '/addresses' },
   {id:4, icon:'heart-outline', title:'wishlist', color:'#ef4444', action:'/wishlist'}
 ] as const
 const ProfileScreen = () => {
@@ -17,7 +17,7 @@ const ProfileScreen = () => {
   const{ user }= useUser()
   const handleMenuPress = (action: (typeof MENU_ITEMS)[number]['action']) => {
     if (action === '/profile') return 
-    // router.push(action)
+    router.push(action)
   }
   return (
     <SafeScreen>
@@ -38,7 +38,7 @@ const ProfileScreen = () => {
                     {user?.firstName} {user?.lastName}
                 </Text>
                 <Text style={styles.textUser}>
-                  {user?.emailAddresses[0].emailAddress}
+                  {user?.emailAddresses?.[0]?.emailAddress || 'no email'}
                 </Text>
               </View>
             </View>
@@ -49,7 +49,7 @@ const ProfileScreen = () => {
             <TouchableOpacity key={item.id} style={[styles.items, { width: '48%' }]}
               activeOpacity={0.7} onPress={() => handleMenuPress(item.action)}>
               <View style={[styles.icon, { backgroundColor: item.color + '20' }]}>
-                <Ionicons name={item.icon as any} size={28} color={item.color}></Ionicons>
+                <Ionicons name={item.icon} size={28} color={item.color}></Ionicons>
               </View>
               <Text style={styles.iconTitle}>{item.title}</Text>
               </TouchableOpacity>
@@ -66,7 +66,7 @@ const ProfileScreen = () => {
         </View>
         <View style={styles.privacy}>
           <TouchableOpacity style={styles.privacyText} activeOpacity={0.7}
-            // onPress={() => router.push('/privacy-security')}
+            onPress={() => router.push('/privacy-security')}
           >
             <View style={styles.notificationCard}>
               <Ionicons name='shield-checkmark-outline' size={22} color='#ffffff'></Ionicons>

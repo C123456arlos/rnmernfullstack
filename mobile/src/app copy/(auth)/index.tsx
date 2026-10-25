@@ -59,7 +59,7 @@ export default function Login() {
       </View>
       <Text style={styles.textTerms}>by signing up you agree to our <Text style={styles.textColor}>terms{', '}</Text>
         <Text style={styles.textColor}>privacy policy</Text>{', and'}
-      <Text style={styles.textColor}>cookie use</Text></Text>
+        <Text style={styles.textColor}>cookie use</Text></Text>
     </View>
   )
 }

@@ -1,18 +1,12 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import React from 'react'
-import SafeScreen from '../../../components/SafeScreen'
 
-const CartScreen = () => {
+const Cart = () => {
   return (
-    <SafeScreen>
-      <Text style={styles.text}>CartScreen</Text>
-    </SafeScreen>
+    <View>
+      <Text>Cart</Text>
+    </View>
   )
 }
-const styles = StyleSheet.create({
-  text: {
-    color:'white'
-  }
-})
 
-export default CartScreen
+export default Cart

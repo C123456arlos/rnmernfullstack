@@ -23,7 +23,7 @@ export default function AuthRoutesLayout() {
     const { isSignedIn, isLoaded } = useAuth()
     if(!isLoaded) return null
     if (isSignedIn) {
-        return <Redirect href={'/(tabs)'}></Redirect>
+        return <Redirect href={'/(tabs)/cart'}></Redirect>
     }
     return <Stack screenOptions={{headerShown:false}}></Stack>
 }
