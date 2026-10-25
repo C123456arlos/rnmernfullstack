@@ -8,12 +8,20 @@ import { SplashScreen, Stack, Tabs } from 'expo-router'
 import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StatusBar } from 'expo-status-bar'
 import { useCallback, useEffect } from 'react'
-import { Platform } from 'react-native'
+import { Platform, TouchableOpacity } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 import InitialLayout from './(auth)/initialLayout'
 import { Ionicons } from '@expo/vector-icons'
-import * as Sentry from '@sentry/react-native'
 
+import * as Sentry from "@sentry/react-native";
+// Sentry.init({
+//   dsn: "https://c07c1906753d70734c21fe2780ee436f@o4512098219589632.ingest.us.sentry.io/4512313413730304",
+//    sendDefaultPii: true,
+//   replaysSessionSampleRate: 1.0,
+//   replaysOnErrorSampleRate: 1.0,
+//   integrations: [Sentry.mobileReplayIntegration()],
+// });
+// throw new Error("error");
 
 Sentry.init({
   dsn: 'https://c07c1906753d70734c21fe2780ee436f@o4512098219589632.ingest.us.sentry.io/4512313413730304',
@@ -28,28 +36,18 @@ Sentry.init({
   // Configure Session Replay
   replaysSessionSampleRate: 1.0,
   replaysOnErrorSampleRate: 1,
- integrations: [
-    Sentry.mobileReplayIntegration({
-      beforeErrorSampling: (event, hint) => {
-        // Only capture replays for unhandled errors
-        const isHandled = event.exception?.values?.some(
-          (exception) => exception.mechanism?.handled === true,
-        );
-        return !isHandled;
-      },
-    }),
-  ],
-  // integrations: [Sentry.mobileReplayIntegration({
-  //     maskAllText: false,
-  // maskAllImages: false,
-  //   maskAllVectors: false,
-  // screenshotStrategy:'canvas'
-  // })],
+
+  integrations: [Sentry.mobileReplayIntegration({
+      maskAllText: false,
+  maskAllImages: false,
+    maskAllVectors: false,
+  screenshotStrategy:'canvas'
+  })],
   
   // uncomment the line below to enable Spotlight (https://spotlightjs.com)
   // spotlight: __DEV__,
 });
-Sentry.getReplay()?.start()
+// // Sentry.getReplay()?.start()
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!
 
