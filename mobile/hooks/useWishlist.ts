@@ -51,6 +51,69 @@
 
 // export default useWishlist
 
+// import { UseMutateFunction, useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+// import { useApi } from "../lib/api"
+// import { Product } from "../types"
+// type wishlistState= {
+//         wishlist: Product[];
+//     isLoading: boolean;
+//     isError: boolean;
+//     wishlistCount: number;
+//     isInWishlist: (productId: string) => boolean;
+//     toggleWishlist: (productId: string) => UseMutateFunction;
+
+// }
+// const useWishlist =<x>() => {
+//     const api = useApi()
+//     const queryClient = useQueryClient()
+//     const { data: wishlist, isLoading, isError } = useQuery({
+//         queryKey: ['wishlist'],
+//         queryFn: async () => {
+//             const { data } = await api.get<{ wishlist: Product[] }>('users/wishlist')
+//             // const { data } = await api.get<{ wishlist: Product[] }>('/users/wishlist')
+//             return data.wishlist
+//         }
+//     })
+//     const addToWishlistMutation = useMutation({
+//         mutationFn: async (productId: string) => {
+//             const { data } = await api.post<{ wishlist: string[] }>(`users/wishlist/${productId}`)
+//             // const { data } = await api.post<{ wishlist: string[] }>(`/users/wishlist`, {productId})
+//             return data.wishlist
+//         },
+//         onSuccess:()=>queryClient.invalidateQueries({queryKey:['wishlist']})
+//     })
+//     const removeFromWishlistMutation = useMutation({
+//         mutationFn: async (productId: string) => {
+//             const { data } = await api.delete<{ wishlist: string[] }>(`users/wishlist/${productId}`)
+//             // const { data } = await api.delete<{ wishlist: string[] }>(`/users/wishlist/${productId}`)
+//             return data.wishlist
+//         },
+//         onSuccess:()=>queryClient.invalidateQueries({queryKey:['wishlist']})
+//     })
+//     const isInWishlist = (productId: string) => {
+//         return wishlist?.some((product)=>product._id===productId) ?? false
+//     }
+//     const toggleWishlist= (productId:string) => {
+//         if (isInWishlist(productId)) {
+//             removeFromWishlistMutation.mutate(productId)
+//         } else {
+//             addToWishlistMutation.mutate(productId)
+//         }
+//     }
+//     return {
+//         wishlist: wishlist || [],
+//         isLoading, isError, wishlistCount: wishlist?.length || 0,
+//         isInWishlist,
+//         toggleWishlist,
+//         addToWishlist: addToWishlistMutation.mutate,
+//         removeFromWishlist: removeFromWishlistMutation.mutate,
+//         isAddingToWishlist: addToWishlistMutation.isPending,
+//         isRemovingFromWishlist:removeFromWishlistMutation.isPending
+//   }
+// }
+
+// export default useWishlist
+
 import { UseMutateFunction, useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useApi } from "../lib/api"
 import { Product } from "../types"
@@ -70,13 +133,12 @@ const useWishlist =<x>() => {
         queryKey: ['wishlist'],
         queryFn: async () => {
             const { data } = await api.get<{ wishlist: Product[] }>('users/wishlist')
-            // const { data } = await api.get<{ wishlist: Product[] }>('/users/wishlist')
-            console.log('data', data)
+            console.log('wishlist', data)
             return data.wishlist
         }
     })
     const addToWishlistMutation = useMutation({
-        mutationFn: async (productId: string) => {
+        mutationFn: async (productId: string)=>{
             const { data } = await api.post<{ wishlist: string[] }>(`users/wishlist/${productId}`)
             // const { data } = await api.post<{ wishlist: string[] }>(`/users/wishlist`, {productId})
             return data.wishlist

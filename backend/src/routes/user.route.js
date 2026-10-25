@@ -10,5 +10,5 @@ router.delete('/addresses/:addressId', protectRoute, deleteAddress)
 
 router.post('/wishlist/:productId', protectRoute, addToWishlist)
 router.delete('/wishlist/:productId',protectRoute, removeFromWishlist)
-router.get('/wishlist', getWishlist)
+router.get('/wishlist',protectRoute, getWishlist)
 export default router

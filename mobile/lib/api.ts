@@ -1,6 +1,7 @@
 import { useAuth } from '@clerk/clerk-expo'
 import axios from 'axios'
 import { useEffect } from 'react'
+// const API_URL = 'https://app-2gnxy.sevalla.app/api'
 const API_URL = 'https://app-2gnxy.sevalla.app/api'
 // const API_URL = 'http://localhost:3000/api'
 const api = axios.create({
