@@ -103,8 +103,10 @@ export async function removeFromWishlist(req, res) {
  }
 export async function getWishlist(req, res) {
     try {
-    // const user= req.user
-    const user= await User.findById(req.user._id).populate('wishlist')
+        // const user= req.user
+        console.log('req.user', req.user)
+        const user = await User.findById(req.user._id).populate('wishlist')
+        console.log('user', user)
     res.status(200).json({ wishlist: user.wishlist })
 } catch (error) {
         console.error('Error in getWishlist controller', error)

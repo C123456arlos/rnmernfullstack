@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Image } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Image, Button } from 'react-native'
 import React, { useMemo, useState } from 'react'
 import SafeScreen from '../../../components/SafeScreen'
 import { COLORS } from '../../../constants/colors'
 import { Ionicons } from '@expo/vector-icons'
 import ProductsGrid from '../../../components/ProductsGrid'
 import useProducts from '../../../hooks/useProducts'
+import * as Sentry from '@sentry/react-native'
 const CATEGORIES = [
   { name: 'All', icon: 'grid-outline' as const },
   { name: 'Electronics', image: require('@/assets/images/desk.png') },
@@ -16,7 +17,6 @@ const ShopScreen = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const { data: products, isLoading, isError } = useProducts()
-  console.log('products', products)
   const filteredProducts = useMemo(() => {
     if (!products) return []
     let filtered = products
@@ -81,6 +81,17 @@ const ShopScreen = () => {
   )
 }
 const styles = StyleSheet.create({
+  errorButton: {
+    backgroundColor: 'purple',
+    paddingHorizontal: 5,
+    paddingVertical: 8,
+    borderRadius:30
+  },
+  errorText: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight:'semibold'
+  },
   categoryFilter: {
     paddingHorizontal: 10,
     marginBottom:12
