@@ -8,7 +8,7 @@ const TabsLayout = () => {
     const { isSignedIn, isLoaded } = useAuth()
     const insets= useSafeAreaInsets()
     if (!isLoaded) return null
-    if(!isSignedIn) return <Redirect href={'/(auth)'}></Redirect>
+    if (!isSignedIn) return <Redirect href={'/(auth)'}></Redirect>
   return (
       <Tabs screenOptions={{
           headerShown: false,
@@ -32,7 +32,7 @@ const TabsLayout = () => {
               fontWeight:600
           }
       }}>
-          <Tabs.Screen name='index' options={{
+          <Tabs.Screen name='shop' options={{
               title: 'Shop', tabBarIcon: ({ color, size }) => <Ionicons
               name='grid' size={size} color={color}></Ionicons>
           }}></Tabs.Screen>

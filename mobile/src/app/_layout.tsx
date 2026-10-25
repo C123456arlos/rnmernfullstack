@@ -4,13 +4,13 @@ import { ConvexReactClient } from 'convex/react'
 import { ConvexProviderWithClerk } from 'convex/react-clerk'
 import { useFonts } from 'expo-font'
 import * as NavigationBar from 'expo-navigation-bar'
-import { SplashScreen, Stack, Tabs } from 'expo-router'
+import { Redirect, SplashScreen, Stack, Tabs } from 'expo-router'
 import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { StatusBar } from 'expo-status-bar'
 import { useCallback, useEffect } from 'react'
 import { Platform, TouchableOpacity } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
-import InitialLayout from './(auth)/initialLayout'
+import InitialLayout from './(auth)/_layout'
 import { Ionicons } from '@expo/vector-icons'
 
 import * as Sentry from "@sentry/react-native";
@@ -40,8 +40,7 @@ Sentry.init({
   integrations: [Sentry.mobileReplayIntegration({
       maskAllText: false,
   maskAllImages: false,
-    maskAllVectors: false,
-  screenshotStrategy:'canvas'
+    maskAllVectors: false
   })],
   
   // uncomment the line below to enable Spotlight (https://spotlightjs.com)
@@ -55,7 +54,8 @@ if (!publishableKey) {
   throw new Error(
     'missing publishable key please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
   )
-} const queryClient = new QueryClient({
+}
+const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error: any, query) => {
       Sentry.captureException(error, {
@@ -82,8 +82,7 @@ if (!publishableKey) {
     }
   })
 })
- function RootLayout() {
-  
+function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
     <ClerkProvider
