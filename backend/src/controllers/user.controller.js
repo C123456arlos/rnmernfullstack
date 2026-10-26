@@ -16,7 +16,7 @@ try {
     res.status(201).json({message:'address added successfully', addresses:user.addresses})
 } catch (error) {
     console.error('Error in addAddress controller', error)
-    res.status(500).json({error:'Internal server error'})
+    res.status(500).json({error:error.message})
 }
 }
 export async function getAddresses(req, res) {
