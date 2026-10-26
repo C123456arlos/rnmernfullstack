@@ -26,7 +26,7 @@ export interface Address{
     _id: string
     label: string
     fullName: string
-    streetAddresss: string
+    streetAddress: string
     city: string
     state: string
     zipCode: string
