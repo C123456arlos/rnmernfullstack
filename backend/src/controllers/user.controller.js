@@ -7,9 +7,9 @@ try {
         return res.status(400).json({error:'missing required address fields'})
     }
     
-    if (isDefault === true) {
-        user.address.forEach(addr=>(addr.isDefault=false))
-    }
+    // if (isDefault === true) {
+    //     user.address.forEach(addr=>(addr.isDefault=false))
+    // }
     user.addresses.push({
         label: label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault:isDefault ||false
     })
