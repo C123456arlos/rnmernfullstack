@@ -6,6 +6,7 @@ try {
     if (!fullName || !streetAddress || !city || !state || !zipCode) {
         return res.status(400).json({error:'missing required address fields'})
     }
+    
     if (isDefault === true) {
         user.address.forEach(addr=>(addr.isDefault=false))
     }
@@ -14,9 +15,9 @@ try {
     })
     await user.save()
     res.status(201).json({message:'address added successfully', addresses:user.addresses})
-} catch (error) {
-    console.error('Error in addAddress controller', error)
-    res.status(500).json({error:"Internal server error"})
+} catch (user) {
+    console.error('Error in addAddress controller', {error, user})
+    res.status(500).json({error:error.message})
 }
 }
 export async function getAddresses(req, res) {
