@@ -16,7 +16,7 @@ export const COLORS = {
         'textsecondary': '#b3b3b3',
         'textterciary':'#6a6a6a',
     accent: '#1db954',
-        'accentred': '#f44336',
+        'accented': '#f44336',
         'accentyellow':'#ffc107'
 
 }

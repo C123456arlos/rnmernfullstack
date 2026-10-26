@@ -126,7 +126,7 @@ type wishlistState= {
     toggleWishlist: (productId: string) => UseMutateFunction;
 
 }
-const useWishlist =<x>() => {
+const useWishlist =() => {
     const api = useApi()
     const queryClient = useQueryClient()
     const { data: wishlist, isLoading, isError } = useQuery({
@@ -156,7 +156,7 @@ const useWishlist =<x>() => {
     const isInWishlist = (productId: string) => {
         return wishlist?.some((product)=>product._id===productId) ?? false
     }
-    const toggleWishlist= (productId:string) => {
+    const toggleWishlist=(productId:string) => {
         if (isInWishlist(productId)) {
             removeFromWishlistMutation.mutate(productId)
         } else {
