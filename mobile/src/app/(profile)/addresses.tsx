@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, Alert, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { useAddresses } from '../../../hooks/useAddresses'
 import SafeScreen from '../../../components/SafeScreen'
@@ -7,17 +7,19 @@ import { COLORS } from '../../../constants/colors'
 import AddressHeader from '../../../components/AddressHeader'
 import { Address } from '../../../types'
 import AddressFormModal from '../../../components/AddressFormModal'
+import AddressCard from '../../../components/AddressCard'
 
 const Addresses = () => {
   const { addAddress, addresses, deleteAddress, isAddingAddress, isDeletingAddress, updateAddress,
     isError, isLoading, isUpdatingAddress } = useAddresses()
   const [showAddressForm, setShowAddressForm] = useState(false)
   const [editingAddressId, setEditingAddressId] = useState<string | null>(null)
+  console.log('editingAdrress', editingAddressId)
   const [addressForm, setAddressForm] = useState({
     label: '', fullName: '', streetAddress: '', city: '', state: '', zipCode: '', phoneNumber: '',
     isDefault:true
   })
-  console.log('addressForm',addressForm)
+  console.log('addressForm', addressForm)
   const handleAddAddress = () => { 
     setShowAddressForm(true)
     setEditingAddressId(null)
@@ -93,8 +95,24 @@ const Addresses = () => {
           onPress={handleAddAddress}>
           <Text style={addStyles.wishlistBtnTxt}>add address</Text>
           </TouchableOpacity>
-      </View>): (
-        <Text>you have some addresses</Text>
+      </View>) : (
+                    <ScrollView style={addStyles.addressList} showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 100 }}>
+            <View style={addStyles.boxContainer}>
+              {addresses.map((address) => (
+                <AddressCard key={address._id} address={address} onEdit={handleEditAddress}
+                  onDelete={handleDeleteAddress} isUpdatingAddress={isUpdatingAddress}
+                  isDeletingAddress={isDeletingAddress}
+                ></AddressCard>
+              ))}
+              <TouchableOpacity style={addStyles.addressBtn} activeOpacity={0.8} onPress={handleAddAddress}>
+                <View style={addStyles.addressInput}>
+                  <Ionicons name='add-circle-outline' size={24} color={'#121212'}></Ionicons>
+                  <Text style={addStyles.addressBtn}>add new address</Text>
+                  </View>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
       )}
       <AddressFormModal visible={showAddressForm} isEditing={!!editingAddressId} addressForm={addressForm} isAddingAddress={isAddingAddress} isUpdatingAddress={isUpdatingAddress}
       onClose={handleCloseAddressForm} onSave={handleSaveAddress} onFormChange={setAddressForm}></AddressFormModal>
@@ -103,6 +121,31 @@ const Addresses = () => {
 }
 export default Addresses
 const addStyles = StyleSheet.create({
+  addressBtn: {
+    backgroundColor: COLORS.primary,
+    borderRadius: 20,
+    paddingVertical: 8,
+    alignItems: 'center',
+    marginTop:4
+  },
+  addressInput: {
+    flexDirection: 'row',
+    alignItems:'center'
+  },
+  addressText: {
+    color: COLORS.background,
+    fontWeight: 'bold',
+    fontSize: 12,
+    lineHeight: 15,
+    marginLeft:5
+  },
+  boxContainer: {
+    paddingHorizontal: 12,
+    paddingVertical:8
+  },
+  addressList: {
+    flex:1
+  },
     wishlist: {
     flex: 1,
     alignItems: 'center',
@@ -177,7 +220,7 @@ const styles = StyleSheet.create({
     marginTop:8
   }
 })
-// import { View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, Alert } from 'react-native'
+// import { View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, Alert, ScrollView } from 'react-native'
 // import React, { useState } from 'react'
 // import { useAddresses } from '../../../hooks/useAddresses'
 // import SafeScreen from '../../../components/SafeScreen'
@@ -186,6 +229,7 @@ const styles = StyleSheet.create({
 // import AddressHeader from '../../../components/AddressHeader'
 // import { Address } from '../../../types'
 // import AddressFormModal from '../../../components/AddressFormModal'
+// import AddressCard from '../../../components/AddressCard'
 
 // const Addresses = () => {
 //   const { addAddress, addresses, deleteAddress, isAddingAddress, isDeletingAddress, updateAddress,
@@ -194,15 +238,14 @@ const styles = StyleSheet.create({
 //   const [editingAddressId, setEditingAddressId] = useState<string | null>(null)
 //   const [addressForm, setAddressForm] = useState({
 //     label: '', fullName: '', streetAddress: '', city: '', state: '', zipCode: '', phoneNumber: '',
-//     isDefault:false
+//     isDefault:true
 //   })
-//   console.log('addressForm',addressForm)
 //   const handleAddAddress = () => { 
 //     setShowAddressForm(true)
 //     setEditingAddressId(null)
 //     setAddressForm({
 //       label: '', fullName: '', streetAddress: '', city: '', state: '', zipCode: '',
-//       phoneNumber:'', isDefault:false
+//       phoneNumber:'', isDefault:true
 //      })
 //   }
 //   const handleEditAddress = (address: Address) => {
@@ -272,8 +315,25 @@ const styles = StyleSheet.create({
 //           onPress={handleAddAddress}>
 //           <Text style={addStyles.wishlistBtnTxt}>add address</Text>
 //           </TouchableOpacity>
-//       </View>): (
-//         <Text>you have some addresses</Text>
+//       </View>) : (
+//                     <ScrollView style={addStyles.addressList} showsVerticalScrollIndicator={false}
+//             contentContainerStyle={{ paddingBottom: 100 }}>
+//             <View style={addStyles.boxContainer}>
+//               {addresses.map((address) => (
+//                 <AddressCard key={address._id} address={address} onEdit={handleEditAddress}
+//                   onDelete={handleDeleteAddress} isUpdatingAddress={isUpdatingAddress} 
+//                   isDeletingAddress={isDeletingAddress}
+//                 ></AddressCard>
+//               ))}
+// <View><Text style={{color:'white'}}>test</Text></View>
+//               <TouchableOpacity style={addStyles.addressBtn} activeOpacity={0.8} onPress={handleAddAddress}>
+//                 <View style={addStyles.addressInput}>
+//                   <Ionicons name='add-circle-outline' size={24} color={'#121212'}></Ionicons>
+//                   <Text style={addStyles.addressText}>add new address</Text>
+//                   </View>
+//               </TouchableOpacity>
+//             </View>
+//           </ScrollView>
 //       )}
 //       <AddressFormModal visible={showAddressForm} isEditing={!!editingAddressId} addressForm={addressForm} isAddingAddress={isAddingAddress} isUpdatingAddress={isUpdatingAddress}
 //       onClose={handleCloseAddressForm} onSave={handleSaveAddress} onFormChange={setAddressForm}></AddressFormModal>
@@ -282,6 +342,31 @@ const styles = StyleSheet.create({
 // }
 // export default Addresses
 // const addStyles = StyleSheet.create({
+//   addressBtn: {
+//     color: COLORS.primary,
+//     borderRadius: 20,
+//     paddingVertical: 8,
+//     alignItems: 'center',
+//     marginTop:4
+//   },
+//   addressInput: {
+//     flexDirection: 'row',
+//     alignItems:'center'
+//   },
+//   addressText: {
+//     color: COLORS.background,
+//     fontWeight: 'bold',
+//     fontSize: 12,
+//     lineHeight: 15,
+//     marginLeft:5
+//   },
+//   boxContainer: {
+//     paddingHorizontal: 12,
+//     paddingVertical:8
+//   },
+//   addressList: {
+//     flex:1
+//   },
 //     wishlist: {
 //     flex: 1,
 //     alignItems: 'center',

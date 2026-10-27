@@ -16,6 +16,10 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required:true
     },
+    streetAddress: {
+        type: String,
+        required:true
+    },
     zipCode: {
         type: String,
         required:true
