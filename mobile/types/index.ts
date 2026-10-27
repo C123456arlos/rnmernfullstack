@@ -1,5 +1,5 @@
 export interface Product{
-    _id: string
+    _id:string
     name: string
     description: string
     price: number
@@ -9,7 +9,7 @@ export interface Product{
     averageRating: number
     totalReviews: number
     createdAt: string
-    updatedAt:string
+    updatedAt: string
 }
 export interface User{
     _id: string
