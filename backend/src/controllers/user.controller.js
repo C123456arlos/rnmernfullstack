@@ -39,7 +39,7 @@ export async function updateAddress(req, res)
         const { label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault } = req.body
         const { addressId } = req.params
         const user = req.user   
-        const address = user.addresses._id(addressId)      
+        const address = user.addresses.id(addressId)      
         if (!address) {
             return res.status(404).json({error:'address not found'})
         }
@@ -60,7 +60,7 @@ export async function updateAddress(req, res)
         res.status(200).json({message:'address updated successfully', address:user.address})
     } catch (error) {
         console.error("Error in update address controller", error)
-        res.status(500).json({error:'Internal server error'})
+        res.status(500).json({error:error.message})
     }
 
  }
