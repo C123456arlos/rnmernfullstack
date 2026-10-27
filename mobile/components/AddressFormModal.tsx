@@ -1,4 +1,4 @@
-import { View, Text, Modal, StyleSheet, TouchableOpacity, ScrollView, TextInput, Switch, ActivityIndicator } from 'react-native'
+import { View, Text, Modal, StyleSheet, TouchableOpacity, ScrollView, TextInput, Switch, ActivityIndicator, KeyboardAvoidingView, Platform } from 'react-native'
 import SafeScreen from './SafeScreen'
 import { COLORS } from '../constants/colors'
 import { Ionicons } from '@expo/vector-icons'
@@ -24,7 +24,8 @@ interface AddressFormModalProps{
 }
 const AddressFormModal = ({addressForm, isAddingAddress, isEditing, isUpdatingAddress, onClose, onFormChange, onSave, visible}:AddressFormModalProps) => {
   return (
-    <Modal visible={visible} animationType='slide' transparent onRequestClose={onClose}>
+      <Modal visible={visible} animationType='slide' transparent onRequestClose={onClose}>
+          <KeyboardAvoidingView behavior={Platform.OS==='ios' ?'padding':'height'} style={styles.kbd}>
           <SafeScreen>
               <View style={styles.topContainer}>
                   <Text style={styles.txt}>
@@ -93,11 +94,15 @@ const AddressFormModal = ({addressForm, isAddingAddress, isEditing, isUpdatingAd
                   </TouchableOpacity>
                   </View>
               </ScrollView>
-      </SafeScreen>
+              </SafeScreen>
+              </KeyboardAvoidingView>
     </Modal>
   )
 }
 const styles = StyleSheet.create({
+    kbd: {
+        flex:1
+    },
     button: {
         backgroundColor: COLORS.primary,
         borderRadius: 12,

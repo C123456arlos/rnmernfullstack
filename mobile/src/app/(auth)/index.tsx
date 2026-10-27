@@ -12,7 +12,7 @@ export default function Login() {
             const { createdSessionId, setActive } = await startSSOFlow({ strategy: 'oauth_google' })
             if (setActive && createdSessionId) {
                 setActive({ session: createdSessionId })
-                router.replace('./')
+                router.replace('/')
             }
         } catch (error) {
             console.log('oauth error', error)

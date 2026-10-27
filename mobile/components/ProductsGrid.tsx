@@ -242,6 +242,12 @@
 //   }
 // })
 
+
+
+
+
+
+
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image, ActivityIndicator, Alert } from 'react-native'
 import { Product } from '../types'
 import useWishlist from '../hooks/useWishlist'
@@ -272,14 +278,13 @@ const ProductsGrid = ({ products, isLoading, isError }: ProductsGridProps) => {
    }
   const renderProduct = ({ item: product }: { item: Product }) => (
     <TouchableOpacity style={[styles.renderButton, { width: '48%' }]} activeOpacity={0.8}
-      // onPress={() => router.push(`/product/${product._id}`)}
+      // onPress={() => router.push(`/product/[id]`)}
+      onPress={() => router.push(`/product/${product._id}`)}
     >
-
-
-                {/* <button
+      {/* <button
           onClick={() => toggleWishlist(product._id) }>
           {isAddingToWishlist || isRemovingFromWishlist ? (
-          <span>loading</span>     
+          <span>loading</span>
           ) : <span>{isInWishlist(product._id)?'added':'removed'}</span>
           
             // (<Ionicons name={isInWishlist(product._id) ? 'heart' : 'heart-outline'} size={18}

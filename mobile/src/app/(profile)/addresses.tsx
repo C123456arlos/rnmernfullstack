@@ -107,7 +107,7 @@ const Addresses = () => {
                 <View style={addStyles.addressInput}>
                   <Ionicons name='add-circle-outline' size={24} color={'#121212'}></Ionicons>
                   <Text style={addStyles.addressBtn}>add new address</Text>
-                  </View>
+                </View>
               </TouchableOpacity>
             </View>
           </ScrollView>
