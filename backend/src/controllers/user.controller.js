@@ -44,6 +44,9 @@ export async function updateAddress()
         //         addr.isDefault=false
         //     })
         // }
+    //       if (isDefault === true) {
+    //     user.address.forEach(addr=>(addr.isDefault===false))
+    // }
         address.label = label || address.label
         address.fullName = fullName || address.fullName
         address.streetAddress = streetAddress || address.streetAddress
