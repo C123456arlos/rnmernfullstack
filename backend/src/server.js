@@ -13,6 +13,7 @@ import orderRoutes from './routes/order.route.js'
 import reviewRoutes from './routes/review.route.js'
 import productRoutes from './routes/product.route.js'
 import cartRoutes from './routes/cart.route.js'
+import { getAddresses } from './controllers/user.controller.js'
 dns.setServers(["1.1.1.1"])
 const app = express()
 const __dirname = path.resolve()

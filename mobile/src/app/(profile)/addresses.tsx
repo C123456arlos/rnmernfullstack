@@ -14,6 +14,7 @@ const Addresses = () => {
     isError, isLoading, isUpdatingAddress } = useAddresses()
   const [showAddressForm, setShowAddressForm] = useState(false)
   const [editingAddressId, setEditingAddressId] = useState<string | null>(null)
+  console.log('editingAddress', editingAddressId)
   const [addressForm, setAddressForm] = useState({
     label: '', fullName: '', streetAddress: '', city: '', state: '', zipCode: '', phoneNumber: '',
     isDefault:true

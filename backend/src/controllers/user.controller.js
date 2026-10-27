@@ -6,13 +6,14 @@ try {
     if (!fullName || !streetAddress || !city || !state || !zipCode) {
         return res.status(400).json({error:'missing required address fields'})
     }
-    
     // if (isDefault === true) {
-    //     user.address.forEach(addr=>(addr.isDefault===false))
+    //     user.addresses.forEach(addr => { addr.isDefault === false })
     // }
-    if (isDefault === true) {
-        user.address.forEach(addr => { addr.isDefault === false })
-    }
+        if (isDefault) {
+            user.addresses.forEach((addr) => {
+                addr.isDefault=false
+            })
+        }
     user.addresses.push({
         label: label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault:isDefault ||false
     })
@@ -32,24 +33,21 @@ export async function getAddresses(req, res) {
         res.status(500).json({error:'Internal server error'})
     }
  }
-export async function updateAddress()
+export async function updateAddress(req, res)
 {
     try {
         const { label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault } = req.body
         const { addressId } = req.params
-        const user = req.user
+        const user = req.user   
         const address = user.addresses._id(addressId)      
         if (!address) {
             return res.status(404).json({error:'address not found'})
         }
-        // if (isDefault) {
-        //     user.addresses.forEach((addr) => {
-        //         addr.isDefault=false
-        //     })
-        // }
-    //       if (isDefault === true) {
-    //           user.address.forEach(addr => { addr.isDefault === false })
-    // }
+        if (isDefault) {
+            user.addresses.forEach((addr) => {
+                addr.isDefault=false
+            })
+        }
         address.label = label || address.label
         address.fullName = fullName || address.fullName
         address.streetAddress = streetAddress || address.streetAddress
