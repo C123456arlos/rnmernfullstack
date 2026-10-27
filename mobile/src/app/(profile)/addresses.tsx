@@ -14,12 +14,10 @@ const Addresses = () => {
     isError, isLoading, isUpdatingAddress } = useAddresses()
   const [showAddressForm, setShowAddressForm] = useState(false)
   const [editingAddressId, setEditingAddressId] = useState<string | null>(null)
-  console.log('editingAdrress', editingAddressId)
   const [addressForm, setAddressForm] = useState({
     label: '', fullName: '', streetAddress: '', city: '', state: '', zipCode: '', phoneNumber: '',
     isDefault:true
   })
-  console.log('addressForm', addressForm)
   const handleAddAddress = () => { 
     setShowAddressForm(true)
     setEditingAddressId(null)

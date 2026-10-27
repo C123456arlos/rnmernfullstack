@@ -7,9 +7,9 @@ try {
         return res.status(400).json({error:'missing required address fields'})
     }
     
-    if (isDefault === true) {
-        user.address.forEach(addr=>(addr.isDefault===false))
-    }
+    // if (isDefault === true) {
+    //     user.address.forEach(addr=>(addr.isDefault===false))
+    // }
     user.addresses.push({
         label: label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault:isDefault ||false
     })
@@ -39,11 +39,11 @@ export async function updateAddress()
         if (!address) {
             return res.status(404).json({error:'address not found'})
         }
-        if (isDefault) {
-            user.addresses.forEach((addr) => {
-                addr.isDefault=false
-            })
-        }
+        // if (isDefault) {
+        //     user.addresses.forEach((addr) => {
+        //         addr.isDefault=false
+        //     })
+        // }
         address.label = label || address.label
         address.fullName = fullName || address.fullName
         address.streetAddress = streetAddress || address.streetAddress
