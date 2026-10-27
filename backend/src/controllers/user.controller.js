@@ -60,11 +60,11 @@ export async function updateAddress(req, res)
         res.status(200).json({message:'address updated successfully', address:user.address})
     } catch (error) {
         console.error("Error in update address controller", error)
-        res.status(500).json({error:error.message})
+        res.status(500).json({error:'Internal server error'})
     }
 
  }
-export async function deleteAddress() {
+export async function deleteAddress(req, res) {
     try {
         const { addressId } = req.params
         const user = req.user
