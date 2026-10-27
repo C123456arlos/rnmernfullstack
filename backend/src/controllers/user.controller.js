@@ -10,6 +10,9 @@ try {
     // if (isDefault === true) {
     //     user.address.forEach(addr=>(addr.isDefault===false))
     // }
+    if (isDefault === true) {
+        user.address.forEach(addr => { addr.isDefault === false })
+    }
     user.addresses.push({
         label: label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault:isDefault ||false
     })
@@ -35,7 +38,7 @@ export async function updateAddress()
         const { label, fullName, streetAddress, city, state, zipCode, phoneNumber, isDefault } = req.body
         const { addressId } = req.params
         const user = req.user
-        const address = user.addresses.id(addressId)      
+        const address = user.addresses._id(addressId)      
         if (!address) {
             return res.status(404).json({error:'address not found'})
         }
@@ -44,9 +47,9 @@ export async function updateAddress()
         //         addr.isDefault=false
         //     })
         // }
-    //       if (isDefault === true) {
-    //     user.address.forEach(addr=>(addr.isDefault===false))
-    // }
+          if (isDefault === true) {
+              user.address.forEach(addr => { addr.isDefault === false })
+    }
         address.label = label || address.label
         address.fullName = fullName || address.fullName
         address.streetAddress = streetAddress || address.streetAddress
