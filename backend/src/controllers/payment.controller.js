@@ -15,8 +15,8 @@ export async function createPaymentIntent(req, res) {
         let subtotal = 0
         const validatedItems = []
         for (const item of cartItems) {
-            const product = await Product.findById('6ad51f3b7ac633084bd3d171')
-            // const product = await Product.findById(item.product._id)
+            // const product = await Product.findById('6ad51f3b7ac633084bd3d171')
+            const product = await Product.findById(item.product._id)
             if (!product) {
                 return res.status(404).json({error:`Product ${item.product.name} not found`})
             }
@@ -35,26 +35,26 @@ export async function createPaymentIntent(req, res) {
         const shipping = 10.0
         const tax = subtotal * 0.08
         const total = subtotal + shipping + tax 
-        console.log('subtotal',subtotal)
-        const amount = 10000
+        // console.log('subtotal',subtotal)
+        const amount = total*100
         if (total <= 0) {
             return res.status(400).json({error:'invalid order total'})
         }
         let customer
-        // if (user.stripeCustomerId) {
-            customer= await stripe.customers.retrieve('cus_VWfCWSkSjdgZQh')
-            // customer= await stripe.customers.retrieve(user.stripeCustomerId)
-        // } else {
-        //     customer = await stripe.customers.create({
-        //         email: user.email,
-        //         name: user.name,
-        //         metadata: {
-        //             clerkId: user.clerkId,
-        //             userId:user._id.toString()
-        //         }
-        //     })
-        //     await User.findByIdAndUpdate(user._id, {stripeCustomerId:customer.id})
-        // }
+        if (user.stripeCustomerId) {
+            // customer= await stripe.customers.retrieve('cus_VWfCWSkSjdgZQh')
+            customer= await stripe.customers.retrieve(user.stripeCustomerId)
+        } else {
+            customer = await stripe.customers.create({
+                email: user.email,
+                name: user.name,
+                metadata: {
+                    clerkId: user.clerkId,
+                    userId:user._id.toString()
+                }
+            })
+            await User.findByIdAndUpdate(user._id, {stripeCustomerId:customer.id})
+        }
         const paymentIntent = await stripe.paymentIntents.create({
             amount:amount,
             // amount: Math.round(total * 100),
@@ -64,22 +64,22 @@ export async function createPaymentIntent(req, res) {
                 enabled:true
             },
             metadata: {
-                clerkId: 'user_3J0qe7MrwSGvnqArhqpT4Obeu9l',
-                // clerkId: user.clerkId,
-                userId: '6adbb4d3e61f261e74139ec4',
-                // userId: user._id.toString(),
-                orderItems: JSON.stringify('6ae1d021dcdc7312ef53e25c'),
-                // orderItems: JSON.stringify(validatedItems),
-                shippingAddress: '1',
-                // shippingAddress: JSON.stringify(shippingAddress),
-                totalPrice:10
-                // totalPrice:total.toFixed(2)
+                // clerkId: 'user_3J0qe7MrwSGvnqArhqpT4Obeu9l',
+                clerkId: user.clerkId,
+                // userId: '6adbb4d3e61f261e74139ec4',
+                userId: user._id.toString(),
+                // orderItems: JSON.stringify('6ae1d021dcdc7312ef53e25c'),
+                orderItems: JSON.stringify(validatedItems),
+                // shippingAddress: '1',
+                shippingAddress: JSON.stringify(shippingAddress),
+                // totalPrice:10
+                totalPrice:total.toFixed(2)
             }
         })
         res.status(200).json({clientSecret:paymentIntent.client_secret})
     } catch (error) {
         console.error('error creating payment intent', error)
-        res.status(500).json({ error: error.message })
-        // res.status(500).json({error:'Internal server error'})
+        // res.status(500).json({ error: error.message })
+        res.status(500).json({error:'Internal server error'})
     }
 }
