@@ -78,7 +78,10 @@ const Cart = () => {
           { text:'ok', onPress:()=>{}}
         ])
       }
+      console.log('cleared')
+      console.log('cleared')
       clearCart()
+      console.log('cleared')
     } catch (error) {
       console.log('payment failed', error)
       Alert.alert('error', 'failed to process payment')
