@@ -31,6 +31,7 @@ const Cart = () => {
     if (newQuantity < 1) return
     updateQuantity({productId, quantity:newQuantity})
   }
+  console.log('cartItems', cartItems)
   const handleRemoveItem = (productId: string, productName: string) => {
     Alert.alert('remove item', `Remove ${productName} from cart`, [
       { text: 'cancel', style: 'cancel' },
@@ -48,6 +49,7 @@ const Cart = () => {
     setAddressModalVisible(true)
   }
   const handleProceedWithPayment = async (selectedAddress: Address) => {
+    console.log('selectedAddress', selectedAddress)
     setAddressModalVisible(false)
     try {
       setPaymentLoading(true)
@@ -78,10 +80,7 @@ const Cart = () => {
           { text:'ok', onPress:()=>{}}
         ])
       }
-      console.log('cleared')
-      console.log('cleared')
       clearCart()
-      console.log('cleared')
     } catch (error) {
       console.log('payment failed', error)
       Alert.alert('error', 'failed to process payment')
