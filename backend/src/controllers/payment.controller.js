@@ -36,8 +36,8 @@ export async function createPaymentIntent(req, res) {
         const tax = subtotal * 0.08
         const total = subtotal + shipping + tax 
         // console.log('subtotal',subtotal)
-        const amount = total*100
-        // const amount = 100
+        // const amount = total * 100
+        const amount = 100
         if (total <= 0) {
             return res.status(400).json({error:'invalid order total'})
         }

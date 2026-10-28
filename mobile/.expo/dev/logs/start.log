@@ -14134,3 +14134,9 @@
 {"_e":"metro:client_log","_t":1793222344371,"level":"log","data":["cartItems","[]"]}
 {"_e":"metro:client_log","_t":1793222344424,"level":"log","data":["cartItems","[]"]}
 {"_e":"metro:client_log","_t":1793222346535,"level":"log","data":["cartItems","[]"]}
+{"_e":"root:init","_t":1793226238556,"format":"v0-jsonl","version":"57.0.29"}
+{"_e":"env:mode","_t":1793226238578,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793226238603,"mode":"development","files":["../..\\..\\.env.local","../..\\..\\.env"],"env":{"EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY":"pk_test_51SWeWIIHXFA0eb7yza2LSQJASEw2zoOqNTZnbrpyIdFrLblWVX3pR3yF9ga0qqgHgKsjFAdWomPzIu708OeGpL4F00lIb1v5In","CLERK_WEBHOOK_SECRET":"whsec_duoJu5O4OzrieUJgGip+sq5bJXf5zTiH","CONVEX_DEPLOYMENT":"dev:accurate-lion-919","EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_dW5pZmllZC1oZWRnZWhvZy01MzQ0LmNsZXJrLmFjY291bnRzLmRldiQ","EXPO_PUBLIC_CONVEX_SITE_URL":"https://accurate-lion-919.convex.site","EXPO_PUBLIC_CONVEX_URL":"https://accurate-lion-919.convex.cloud","SENTRY_AUTH_TOKEN":"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"}}
+{"_e":"devserver:start","_t":1793226246589,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793226253560,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793226257855,"plugins":[]}
