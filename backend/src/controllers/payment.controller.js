@@ -15,8 +15,8 @@ export async function createPaymentIntent(req, res) {
         let subtotal = 0
         const validatedItems = []
         for (const item of cartItems) {
-            const product = await Product.findById('6ad51f3b7ac633084bd3d171')
-            // const product = await Product.findById(item.product._id)
+            // const product = await Product.findById('6ad51f3b7ac633084bd3d171')
+            const product = await Product.findById(item.product._id)
             if (!product) {
                 return res.status(404).json({error:`Product ${item.product.name} not found`})
             }
