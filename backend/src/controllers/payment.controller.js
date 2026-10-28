@@ -42,20 +42,20 @@ export async function createPaymentIntent(req, res) {
             return res.status(400).json({error:'invalid order total'})
         }
         let customer
-        // if (user.stripeCustomerId) {
-            customer= await stripe.customers.retrieve('cus_VWfCWSkSjdgZQh')
-            // customer= await stripe.customers.retrieve(user.stripeCustomerId)
-        // } else {
-        //     customer = await stripe.customers.create({
-        //         email: user.email,
-        //         name: user.name,
-        //         metadata: {
-        //             clerkId: user.clerkId,
-        //             userId:user._id.toString()
-        //         }
-        //     })
-        //     await User.findByIdAndUpdate(user._id, {stripeCustomerId:customer.id})
-        // }
+        if (user.stripeCustomerId) {
+            // customer= await stripe.customers.retrieve('cus_VWfCWSkSjdgZQh')
+            customer= await stripe.customers.retrieve(user.stripeCustomerId)
+        } else {
+            customer = await stripe.customers.create({
+                email: user.email,
+                name: user.name,
+                metadata: {
+                    clerkId: user.clerkId,
+                    userId:user._id.toString()
+                }
+            })
+            await User.findByIdAndUpdate(user._id, {stripeCustomerId:customer.id})
+        }
         const paymentIntent = await stripe.paymentIntents.create({
             amount:amount,
             // amount: Math.round(total * 100),
