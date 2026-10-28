@@ -51,7 +51,7 @@ export async function createPaymentIntent(req, res) {
             })
             await User.findByIdAndUpdate(user._id, {stripeCustomerId:customer.id})
         }
-        const paymentIntent = await stripe.paymentIntent.create({
+        const paymentIntent = await stripe.create({
             amount: Math.round(total * 100),
             currency: 'usd',
             customer: customer.id,
