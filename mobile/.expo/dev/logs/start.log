@@ -13442,3 +13442,9 @@
 {"_e":"metro:config","_t":1793211578563,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
 {"_e":"expo:dev-tools-plugin:load","_t":1793211579182,"plugins":[]}
 {"_e":"metro:instantiate","_t":1793211591999,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"root:init","_t":1793215156064,"format":"v0-jsonl","version":"57.0.29"}
+{"_e":"env:mode","_t":1793215156085,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1793215156109,"mode":"development","files":["../..\\..\\.env.local"],"env":{"CLERK_WEBHOOK_SECRET":"whsec_duoJu5O4OzrieUJgGip+sq5bJXf5zTiH","CONVEX_DEPLOYMENT":"dev:accurate-lion-919","EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY":"pk_test_dW5pZmllZC1oZWRnZWhvZy01MzQ0LmNsZXJrLmFjY291bnRzLmRldiQ","EXPO_PUBLIC_CONVEX_SITE_URL":"https://accurate-lion-919.convex.site","EXPO_PUBLIC_CONVEX_URL":"https://accurate-lion-919.convex.cloud","SENTRY_AUTH_TOKEN":"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"}}
+{"_e":"devserver:start","_t":1793215165634,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\src\\app","serverComponents":false,"serverActions":false,"serverRendering":true,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1793215178909,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":true,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1793215182881,"plugins":[]}
