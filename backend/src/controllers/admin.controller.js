@@ -79,7 +79,7 @@ export async function getAllOrders(_, res) {
         res.status(200).json({orders})
     } catch (error) {
         console.error('Error in getAllOrders controller', error)
-        res.status(500).json({error:'internal server error'})
+        res.status(500).json({error:'Internal server error'})
     }
 }
 export async function updateOrderStatus(req, res) {
