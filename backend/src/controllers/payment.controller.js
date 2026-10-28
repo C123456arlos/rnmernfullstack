@@ -69,6 +69,7 @@ export async function createPaymentIntent(req, res) {
         res.status(200).json({clientSecret:paymentIntent.client_secret})
     } catch (error) {
         console.error('error creating payment intent', error)
-        res.status(500).json({error:'Internal server error'})
+        res.status(500).json({error:error.message})
+        // res.status(500).json({error:'Internal server error'})
     }
 }
