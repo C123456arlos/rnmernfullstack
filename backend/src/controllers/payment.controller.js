@@ -65,16 +65,16 @@ export async function createPaymentIntent(req, res) {
                 enabled:true
             },
             metadata: {
-                clerkId: 'user_3J0qe7MrwSGvnqArhqpT4Obeu9l',
-                // clerkId: user.clerkId,
-                userId: '6adbb4d3e61f261e74139ec4',
-                // userId: user._id.toString(),
-                orderItems: JSON.stringify('6ae1d021dcdc7312ef53e25c'),
-                // orderItems: JSON.stringify(validatedItems),
-                shippingAddress: '1',
-                // shippingAddress: JSON.stringify(shippingAddress),
-                totalPrice:10
-                // totalPrice:total.toFixed(2)
+                // clerkId: 'user_3J0qe7MrwSGvnqArhqpT4Obeu9l',
+                clerkId: user.clerkId,
+                // userId: '6adbb4d3e61f261e74139ec4',
+                userId: user._id.toString(),
+                // orderItems: JSON.stringify('6ae1d021dcdc7312ef53e25c'),
+                orderItems: JSON.stringify(validatedItems),
+                // shippingAddress: '1',
+                shippingAddress: JSON.stringify(shippingAddress),
+                // totalPrice:10
+                totalPrice:total.toFixed(2)
             }
         })
         res.status(200).json({clientSecret:paymentIntent.client_secret})
