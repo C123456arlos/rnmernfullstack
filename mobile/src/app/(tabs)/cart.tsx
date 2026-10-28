@@ -12,6 +12,7 @@ import { router } from 'expo-router'
 import { Image } from 'expo-image'
 import OrderSummary from '../../../components/OrderSummary'
 import AddressSelectionModal from '../../../components/AddressSelectionModal'
+import * as Sentry from '@sentry/react-native'
 const Cart = () => {
   const api =useApi()
   const { addToCart, isAddingToCart, cart, cartItemCount, cartTotal, clearCart, isClearing, isError,
@@ -31,7 +32,6 @@ const Cart = () => {
     if (newQuantity < 1) return
     updateQuantity({productId, quantity:newQuantity})
   }
-  console.log('cartItems', cartItems)
   const handleRemoveItem = (productId: string, productName: string) => {
     Alert.alert('remove item', `Remove ${productName} from cart`, [
       { text: 'cancel', style: 'cancel' },
@@ -49,7 +49,11 @@ const Cart = () => {
     setAddressModalVisible(true)
   }
   const handleProceedWithPayment = async (selectedAddress: Address) => {
-    console.log('selectedAddress', selectedAddress)
+    Sentry.logger.info('checkout initiated', {
+      itemCount: cartItems,
+      total: total.toFixed(2),
+      city:selectedAddress.city
+    })
     setAddressModalVisible(false)
     try {
       setPaymentLoading(true)
@@ -68,21 +72,41 @@ const Cart = () => {
         merchantDisplayName:'your store name'
       })
       if (initError) {
+        Sentry.logger.error('payment sheet init failed', {
+          errorCode: initError.code,
+          errorMessage: initError.message,
+          cartTotal: total,
+          itemCount:cartItems.length
+        })
         Alert.alert('error', initError.message)
         setPaymentLoading(false)
         return
       }
       const { error: presentError } = await presentPaymentSheet()
       if (presentError) {
+        Sentry.logger.error('payment cancelled', {
+          errorCode: presentError.code,
+          errorMessage: presentError.message,
+          cartTotal: total,
+          itemCount:cartItems.length
+        })
         Alert.alert('payment cancelled', presentError.message)
       } else {
+        Sentry.logger.info('payment successfull', {
+          total: total.toFixed(2),
+          itemCount:cartItems.length
+        })
         Alert.alert('success', 'your payment was successful your order is being processed', [
           { text:'ok', onPress:()=>{}}
         ])
+        clearCart()
       }
-      clearCart()
     } catch (error) {
-      console.log('payment failed', error)
+      Sentry.logger.error('payment failed', {
+        error: error instanceof Error ? error.message : 'unknown error',
+        cartTotal: total,
+        itemCount:cartItems.length
+      })
       Alert.alert('error', 'failed to process payment')
     } finally {
       setPaymentLoading(false)
@@ -492,4 +516,3 @@ const stylesErr = StyleSheet.create({
     marginTop:4
   }
 })
-// 14:31

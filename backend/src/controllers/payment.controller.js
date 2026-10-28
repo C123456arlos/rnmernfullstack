@@ -80,7 +80,45 @@ export async function createPaymentIntent(req, res) {
         res.status(200).json({clientSecret:paymentIntent.client_secret})
     } catch (error) {
         console.error('error creating payment intent', error)
-        // res.status(500).json({ error: error.message })
-        res.status(500).json({error:error.message})
+        res.status(500).json({error:'internal server error'})
     }
+}
+export async function handleWebhook(req, res) {
+    const sig = req.headers['stripe-signature']
+    let event
+    try {
+        event = stripe.webhooks.constructEvent(req.body, sig, ENV.STRIPE_WEBHOOK_SECRET)
+    } catch (error) {
+        console.error('webhook signature verification failed', err.message)
+        return res.status(400).send(`webhook error ${err.message}`)
+    }
+    if (event.type === 'payment_intent.succeeded') {
+        const paymentIntent = event.data.object
+        console.log('payment succeeded', paymentIntent.id)
+        try {
+            const { userId, clerkId, orderItems, shippingAddress, totalPrice } = paymentIntent.metadata
+            const existingOrder = await Order.findOne({ 'paymentResult.id': paymentIntent.id })
+            if (existingOrder) {
+                console.log('order already exists for payment', paymentIntent.id)
+                return res.json({received:true})
+            }
+            const order = await Order.create({
+                user: userId,
+                clerkId, orderItems: JSON.parse(orderItems),
+                shippingAddress: JSON.parse(shippingAddress),
+                paymentResult: { id: paymentIntent.id, status: 'succeeded' },
+                totalPrice:parseFloat(totalPrice)
+            })
+            const items = JSON.parse(orderItems)
+            for (const item of items) {
+                await Product.findByIdAndUpdate(item.product, {
+                    $inc:{stock:-item.quantity}
+                })
+            }
+            console.log('order created successfully', order._id)
+        } catch (error) {
+            console.error('error creating order from webhook', error)
+        }
+    }
+    res.json({received:true})
 }

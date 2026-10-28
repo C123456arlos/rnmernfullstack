@@ -12,6 +12,7 @@ import { Platform, TouchableOpacity } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
 import InitialLayout from './(auth)/_layout'
 import { Ionicons } from '@expo/vector-icons'
+import { StripeProvider } from '@stripe/stripe-react-native'
 
 import * as Sentry from "@sentry/react-native";
 // Sentry.init({
@@ -88,7 +89,10 @@ function RootLayout() {
     <ClerkProvider
       tokenCache={tokenCache}
       publishableKey={publishableKey}>
-       <Stack screenOptions={{headerShown:false}}></Stack>  </ClerkProvider>
+        <StripeProvider publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}>
+          <Stack screenOptions={{ headerShown: false }}></Stack>
+        </StripeProvider>
+      </ClerkProvider>
         </QueryClientProvider>
       )
     }
