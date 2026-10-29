@@ -25,13 +25,18 @@ export async function createReview(req, res) {
         if (!productInOrder) {
             return res.status(400).json({error:'product not found in this order'})
         }
+        let review
         const existingReview = await Review.findOne({ productId, userId: user._id })
         if (existingReview) {
-            return res.status(400).json({error:'you have already removed this product'})
+            // return res.status(400).json({error:'you have already removed this product'})
+            existingReview.rating = rating
+            existingReview.orderId = orderId
+            review = await existingReview.save()
+        } else {
+            review = await Review.create({
+                productId, userId:user._id, orderId, rating
+            })
         }
-        const review = await Review.create({
-            productId, userId:user._id, orderId, rating
-        })
         // const product = await Product.findById(productId)
         // const reviews = await Review.find({ productId })
         // const totalRating = reviews.reduce((sum, rev) => sum + rev.rating, 0)

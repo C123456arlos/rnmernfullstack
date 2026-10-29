@@ -7,6 +7,7 @@ function OrdersPage() {
     queryKey: ['orders'],
     queryFn:orderApi.getAll
   })
+  console.log('ordersdata', ordersData)
   const updateStatusMutation = useMutation({
     mutationFn: orderApi.updateStatus,
     onSuccess: () => {
