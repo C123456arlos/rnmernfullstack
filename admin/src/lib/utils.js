@@ -1,6 +1,7 @@
 export const capitalizeText = (text) => {
     if (!text) return text
-    return text.charAt(0).toUppercase() + text.slice(1)
+    // return text.charAt[0].toUpperCase() + text.slice(1)
+       return text.charAt(0).toUpperCase() +text.slice(1)
 }
 export const getOrderStatusBadge = (status) => {
     switch (status?.toLowerCase()) {

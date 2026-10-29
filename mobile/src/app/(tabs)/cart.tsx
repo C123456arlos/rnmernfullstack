@@ -99,7 +99,8 @@ const Cart = () => {
         Alert.alert('success', 'your payment was successful your order is being processed', [
           { text:'ok', onPress:()=>{}}
         ])
-        clearCart()
+        await clearCart()
+
       }
     } catch (error) {
       Sentry.logger.error('payment failed', {
