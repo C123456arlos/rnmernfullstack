@@ -25,23 +25,23 @@ export async function createReview(req, res) {
         if (!productInOrder) {
             return res.status(400).json({error:'product not found in this order'})
         }
-        let review
-        const existingReview = await Review.findOne({ productId, userId: user._id })
-        if (existingReview) {
-            // return res.status(400).json({error:'you have already removed this product'})
-            existingReview.rating = rating
-            existingReview.orderId = orderId
-            review = await existingReview.save()
-        } else {
-            review = await Review.create({
-                productId, userId:user._id, orderId, rating
-            })
-        }
-        // const product = await Product.findById(productId)
-        // const reviews = await Review.find({ productId })
-        // const totalRating = reviews.reduce((sum, rev) => sum + rev.rating, 0)
-        // product.averageRating = totalRating / reviews.length
-        // product.totalReviews = reviews.length
+        // let review
+        // const existingReview = await Review.findOne({ productId, userId: user._id })
+        // if (existingReview) {
+        //     existingReview.rating = rating
+        //     existingReview.orderId = orderId
+        //     review = await existingReview.save()
+        // } else {
+        //     review = await Review.create({
+        //         productId, userId:user._id, orderId, rating
+        //     })
+        // }
+        const review = await Review.findOneAndUpdate({
+            productId, userId:user._id
+        }, { rating, orderId, productId, userId: user._id }, {
+            new:true, upsert:true, runValidators:true
+        })
+
 
         const reviews = await Review.find({ productId })
         const totalRating = reviews.reduce((sum, rev) => sum + rev.rating, 0)
